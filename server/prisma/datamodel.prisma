@@ -1,0 +1,12 @@
+type Message {
+    id: ID! @id
+    createdAt: DateTime! @createdAt
+    text: String!
+    answers: [Answer!]!
+}
+type Answer{
+    id: ID! @id
+    createdAt: DateTime! @createdAt
+    text: String!
+    message: Message!
+}

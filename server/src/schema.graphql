@@ -1,0 +1,35 @@
+type Query{
+    info: String!
+    messages(filter: String, skip:Int, first:Int, orderBy: MessageOrderByInput): Messages!
+}
+
+enum MessageOrderByInput{
+    createdAt_DESC
+    createdAt_ASC
+}
+
+type Mutation{
+    postMessage(text:String!):Message!
+    postAnswer(messageId:ID!, text:String!):Answer!
+}
+
+type Subscription{
+    newMessage: Message
+}
+
+type Messages {
+    messageList: [Message!]!
+    count: Int!
+}
+
+type Message {
+    id: ID!
+    text: String! 
+    answers: [Answer] 
+}
+
+type Answer{
+    id: ID!
+    text:String!
+    message:Message!
+}
