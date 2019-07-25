@@ -16,6 +16,8 @@ type Answer {
   createdAt: DateTime!
   text: String!
   message: Message!
+  likes: Int!
+  dislikes: Int!
 }
 
 type AnswerConnection {
@@ -28,6 +30,8 @@ input AnswerCreateInput {
   id: ID
   text: String!
   message: MessageCreateOneWithoutAnswersInput!
+  likes: Int!
+  dislikes: Int!
 }
 
 input AnswerCreateManyWithoutMessageInput {
@@ -38,6 +42,8 @@ input AnswerCreateManyWithoutMessageInput {
 input AnswerCreateWithoutMessageInput {
   id: ID
   text: String!
+  likes: Int!
+  dislikes: Int!
 }
 
 type AnswerEdge {
@@ -52,12 +58,18 @@ enum AnswerOrderByInput {
   createdAt_DESC
   text_ASC
   text_DESC
+  likes_ASC
+  likes_DESC
+  dislikes_ASC
+  dislikes_DESC
 }
 
 type AnswerPreviousValues {
   id: ID!
   createdAt: DateTime!
   text: String!
+  likes: Int!
+  dislikes: Int!
 }
 
 input AnswerScalarWhereInput {
@@ -97,6 +109,22 @@ input AnswerScalarWhereInput {
   text_not_starts_with: String
   text_ends_with: String
   text_not_ends_with: String
+  likes: Int
+  likes_not: Int
+  likes_in: [Int!]
+  likes_not_in: [Int!]
+  likes_lt: Int
+  likes_lte: Int
+  likes_gt: Int
+  likes_gte: Int
+  dislikes: Int
+  dislikes_not: Int
+  dislikes_in: [Int!]
+  dislikes_not_in: [Int!]
+  dislikes_lt: Int
+  dislikes_lte: Int
+  dislikes_gt: Int
+  dislikes_gte: Int
   AND: [AnswerScalarWhereInput!]
   OR: [AnswerScalarWhereInput!]
   NOT: [AnswerScalarWhereInput!]
@@ -123,14 +151,20 @@ input AnswerSubscriptionWhereInput {
 input AnswerUpdateInput {
   text: String
   message: MessageUpdateOneRequiredWithoutAnswersInput
+  likes: Int
+  dislikes: Int
 }
 
 input AnswerUpdateManyDataInput {
   text: String
+  likes: Int
+  dislikes: Int
 }
 
 input AnswerUpdateManyMutationInput {
   text: String
+  likes: Int
+  dislikes: Int
 }
 
 input AnswerUpdateManyWithoutMessageInput {
@@ -152,6 +186,8 @@ input AnswerUpdateManyWithWhereNestedInput {
 
 input AnswerUpdateWithoutMessageDataInput {
   text: String
+  likes: Int
+  dislikes: Int
 }
 
 input AnswerUpdateWithWhereUniqueWithoutMessageInput {
@@ -203,6 +239,22 @@ input AnswerWhereInput {
   text_ends_with: String
   text_not_ends_with: String
   message: MessageWhereInput
+  likes: Int
+  likes_not: Int
+  likes_in: [Int!]
+  likes_not_in: [Int!]
+  likes_lt: Int
+  likes_lte: Int
+  likes_gt: Int
+  likes_gte: Int
+  dislikes: Int
+  dislikes_not: Int
+  dislikes_in: [Int!]
+  dislikes_not_in: [Int!]
+  dislikes_lt: Int
+  dislikes_lte: Int
+  dislikes_gt: Int
+  dislikes_gte: Int
   AND: [AnswerWhereInput!]
   OR: [AnswerWhereInput!]
   NOT: [AnswerWhereInput!]
@@ -225,6 +277,8 @@ type Message {
   createdAt: DateTime!
   text: String!
   answers(where: AnswerWhereInput, orderBy: AnswerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Answer!]
+  likes: Int!
+  dislikes: Int!
 }
 
 type MessageConnection {
@@ -237,6 +291,8 @@ input MessageCreateInput {
   id: ID
   text: String!
   answers: AnswerCreateManyWithoutMessageInput
+  likes: Int!
+  dislikes: Int!
 }
 
 input MessageCreateOneWithoutAnswersInput {
@@ -247,6 +303,8 @@ input MessageCreateOneWithoutAnswersInput {
 input MessageCreateWithoutAnswersInput {
   id: ID
   text: String!
+  likes: Int!
+  dislikes: Int!
 }
 
 type MessageEdge {
@@ -261,12 +319,18 @@ enum MessageOrderByInput {
   createdAt_DESC
   text_ASC
   text_DESC
+  likes_ASC
+  likes_DESC
+  dislikes_ASC
+  dislikes_DESC
 }
 
 type MessagePreviousValues {
   id: ID!
   createdAt: DateTime!
   text: String!
+  likes: Int!
+  dislikes: Int!
 }
 
 type MessageSubscriptionPayload {
@@ -290,10 +354,14 @@ input MessageSubscriptionWhereInput {
 input MessageUpdateInput {
   text: String
   answers: AnswerUpdateManyWithoutMessageInput
+  likes: Int
+  dislikes: Int
 }
 
 input MessageUpdateManyMutationInput {
   text: String
+  likes: Int
+  dislikes: Int
 }
 
 input MessageUpdateOneRequiredWithoutAnswersInput {
@@ -305,6 +373,8 @@ input MessageUpdateOneRequiredWithoutAnswersInput {
 
 input MessageUpdateWithoutAnswersDataInput {
   text: String
+  likes: Int
+  dislikes: Int
 }
 
 input MessageUpsertWithoutAnswersInput {
@@ -352,6 +422,22 @@ input MessageWhereInput {
   answers_every: AnswerWhereInput
   answers_some: AnswerWhereInput
   answers_none: AnswerWhereInput
+  likes: Int
+  likes_not: Int
+  likes_in: [Int!]
+  likes_not_in: [Int!]
+  likes_lt: Int
+  likes_lte: Int
+  likes_gt: Int
+  likes_gte: Int
+  dislikes: Int
+  dislikes_not: Int
+  dislikes_in: [Int!]
+  dislikes_not_in: [Int!]
+  dislikes_lt: Int
+  dislikes_lte: Int
+  dislikes_gt: Int
+  dislikes_gte: Int
   AND: [MessageWhereInput!]
   OR: [MessageWhereInput!]
   NOT: [MessageWhereInput!]

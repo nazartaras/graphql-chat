@@ -1,9 +1,7 @@
 async function messages(parent,args,context) {
-    console.log('hi')
     const where = args.filter ? {
-        title: args.filter
+        text: args.filter
     }: {}
-
     const messageList = await context.prisma.messages({
         where,
         skip:args.skip,

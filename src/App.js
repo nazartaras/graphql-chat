@@ -1,6 +1,7 @@
     import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import MessageList from './components/Message/MessageList'
+import './App.css'
 
 function App() {
   return (

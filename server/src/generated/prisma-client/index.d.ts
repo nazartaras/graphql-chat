@@ -146,7 +146,11 @@ export type AnswerOrderByInput =
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "text_ASC"
-  | "text_DESC";
+  | "text_DESC"
+  | "likes_ASC"
+  | "likes_DESC"
+  | "dislikes_ASC"
+  | "dislikes_DESC";
 
 export type MessageOrderByInput =
   | "id_ASC"
@@ -154,7 +158,11 @@ export type MessageOrderByInput =
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "text_ASC"
-  | "text_DESC";
+  | "text_DESC"
+  | "likes_ASC"
+  | "likes_DESC"
+  | "dislikes_ASC"
+  | "dislikes_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -196,11 +204,15 @@ export interface MessageCreateInput {
   id?: Maybe<ID_Input>;
   text: String;
   answers?: Maybe<AnswerCreateManyWithoutMessageInput>;
+  likes: Int;
+  dislikes: Int;
 }
 
 export interface MessageUpdateInput {
   text?: Maybe<String>;
   answers?: Maybe<AnswerUpdateManyWithoutMessageInput>;
+  likes?: Maybe<Int>;
+  dislikes?: Maybe<Int>;
 }
 
 export interface MessageUpsertWithoutAnswersInput {
@@ -221,12 +233,16 @@ export interface MessageSubscriptionWhereInput {
 
 export interface MessageUpdateManyMutationInput {
   text?: Maybe<String>;
+  likes?: Maybe<Int>;
+  dislikes?: Maybe<Int>;
 }
 
 export interface AnswerCreateInput {
   id?: Maybe<ID_Input>;
   text: String;
   message: MessageCreateOneWithoutAnswersInput;
+  likes: Int;
+  dislikes: Int;
 }
 
 export interface AnswerUpdateManyWithWhereNestedInput {
@@ -248,15 +264,21 @@ export interface AnswerUpsertWithWhereUniqueWithoutMessageInput {
 export interface MessageCreateWithoutAnswersInput {
   id?: Maybe<ID_Input>;
   text: String;
+  likes: Int;
+  dislikes: Int;
 }
 
 export interface AnswerUpdateWithoutMessageDataInput {
   text?: Maybe<String>;
+  likes?: Maybe<Int>;
+  dislikes?: Maybe<Int>;
 }
 
 export interface AnswerUpdateInput {
   text?: Maybe<String>;
   message?: Maybe<MessageUpdateOneRequiredWithoutAnswersInput>;
+  likes?: Maybe<Int>;
+  dislikes?: Maybe<Int>;
 }
 
 export interface MessageWhereInput {
@@ -299,6 +321,22 @@ export interface MessageWhereInput {
   answers_every?: Maybe<AnswerWhereInput>;
   answers_some?: Maybe<AnswerWhereInput>;
   answers_none?: Maybe<AnswerWhereInput>;
+  likes?: Maybe<Int>;
+  likes_not?: Maybe<Int>;
+  likes_in?: Maybe<Int[] | Int>;
+  likes_not_in?: Maybe<Int[] | Int>;
+  likes_lt?: Maybe<Int>;
+  likes_lte?: Maybe<Int>;
+  likes_gt?: Maybe<Int>;
+  likes_gte?: Maybe<Int>;
+  dislikes?: Maybe<Int>;
+  dislikes_not?: Maybe<Int>;
+  dislikes_in?: Maybe<Int[] | Int>;
+  dislikes_not_in?: Maybe<Int[] | Int>;
+  dislikes_lt?: Maybe<Int>;
+  dislikes_lte?: Maybe<Int>;
+  dislikes_gt?: Maybe<Int>;
+  dislikes_gte?: Maybe<Int>;
   AND?: Maybe<MessageWhereInput[] | MessageWhereInput>;
   OR?: Maybe<MessageWhereInput[] | MessageWhereInput>;
   NOT?: Maybe<MessageWhereInput[] | MessageWhereInput>;
@@ -307,10 +345,14 @@ export interface MessageWhereInput {
 export interface AnswerCreateWithoutMessageInput {
   id?: Maybe<ID_Input>;
   text: String;
+  likes: Int;
+  dislikes: Int;
 }
 
 export interface AnswerUpdateManyDataInput {
   text?: Maybe<String>;
+  likes?: Maybe<Int>;
+  dislikes?: Maybe<Int>;
 }
 
 export interface AnswerCreateManyWithoutMessageInput {
@@ -322,6 +364,8 @@ export interface AnswerCreateManyWithoutMessageInput {
 
 export interface AnswerUpdateManyMutationInput {
   text?: Maybe<String>;
+  likes?: Maybe<Int>;
+  dislikes?: Maybe<Int>;
 }
 
 export interface AnswerWhereInput {
@@ -362,6 +406,22 @@ export interface AnswerWhereInput {
   text_ends_with?: Maybe<String>;
   text_not_ends_with?: Maybe<String>;
   message?: Maybe<MessageWhereInput>;
+  likes?: Maybe<Int>;
+  likes_not?: Maybe<Int>;
+  likes_in?: Maybe<Int[] | Int>;
+  likes_not_in?: Maybe<Int[] | Int>;
+  likes_lt?: Maybe<Int>;
+  likes_lte?: Maybe<Int>;
+  likes_gt?: Maybe<Int>;
+  likes_gte?: Maybe<Int>;
+  dislikes?: Maybe<Int>;
+  dislikes_not?: Maybe<Int>;
+  dislikes_in?: Maybe<Int[] | Int>;
+  dislikes_not_in?: Maybe<Int[] | Int>;
+  dislikes_lt?: Maybe<Int>;
+  dislikes_lte?: Maybe<Int>;
+  dislikes_gt?: Maybe<Int>;
+  dislikes_gte?: Maybe<Int>;
   AND?: Maybe<AnswerWhereInput[] | AnswerWhereInput>;
   OR?: Maybe<AnswerWhereInput[] | AnswerWhereInput>;
   NOT?: Maybe<AnswerWhereInput[] | AnswerWhereInput>;
@@ -369,6 +429,8 @@ export interface AnswerWhereInput {
 
 export interface MessageUpdateWithoutAnswersDataInput {
   text?: Maybe<String>;
+  likes?: Maybe<Int>;
+  dislikes?: Maybe<Int>;
 }
 
 export interface AnswerScalarWhereInput {
@@ -408,6 +470,22 @@ export interface AnswerScalarWhereInput {
   text_not_starts_with?: Maybe<String>;
   text_ends_with?: Maybe<String>;
   text_not_ends_with?: Maybe<String>;
+  likes?: Maybe<Int>;
+  likes_not?: Maybe<Int>;
+  likes_in?: Maybe<Int[] | Int>;
+  likes_not_in?: Maybe<Int[] | Int>;
+  likes_lt?: Maybe<Int>;
+  likes_lte?: Maybe<Int>;
+  likes_gt?: Maybe<Int>;
+  likes_gte?: Maybe<Int>;
+  dislikes?: Maybe<Int>;
+  dislikes_not?: Maybe<Int>;
+  dislikes_in?: Maybe<Int[] | Int>;
+  dislikes_not_in?: Maybe<Int[] | Int>;
+  dislikes_lt?: Maybe<Int>;
+  dislikes_lte?: Maybe<Int>;
+  dislikes_gt?: Maybe<Int>;
+  dislikes_gte?: Maybe<Int>;
   AND?: Maybe<AnswerScalarWhereInput[] | AnswerScalarWhereInput>;
   OR?: Maybe<AnswerScalarWhereInput[] | AnswerScalarWhereInput>;
   NOT?: Maybe<AnswerScalarWhereInput[] | AnswerScalarWhereInput>;
@@ -441,6 +519,8 @@ export interface MessagePreviousValues {
   id: ID_Output;
   createdAt: DateTimeOutput;
   text: String;
+  likes: Int;
+  dislikes: Int;
 }
 
 export interface MessagePreviousValuesPromise
@@ -449,6 +529,8 @@ export interface MessagePreviousValuesPromise
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
   text: () => Promise<String>;
+  likes: () => Promise<Int>;
+  dislikes: () => Promise<Int>;
 }
 
 export interface MessagePreviousValuesSubscription
@@ -457,6 +539,8 @@ export interface MessagePreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   text: () => Promise<AsyncIterator<String>>;
+  likes: () => Promise<AsyncIterator<Int>>;
+  dislikes: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface AggregateAnswer {
@@ -479,6 +563,8 @@ export interface Answer {
   id: ID_Output;
   createdAt: DateTimeOutput;
   text: String;
+  likes: Int;
+  dislikes: Int;
 }
 
 export interface AnswerPromise extends Promise<Answer>, Fragmentable {
@@ -486,6 +572,8 @@ export interface AnswerPromise extends Promise<Answer>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   text: () => Promise<String>;
   message: <T = MessagePromise>() => T;
+  likes: () => Promise<Int>;
+  dislikes: () => Promise<Int>;
 }
 
 export interface AnswerSubscription
@@ -495,6 +583,8 @@ export interface AnswerSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   text: () => Promise<AsyncIterator<String>>;
   message: <T = MessageSubscription>() => T;
+  likes: () => Promise<AsyncIterator<Int>>;
+  dislikes: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface AnswerNullablePromise
@@ -504,6 +594,8 @@ export interface AnswerNullablePromise
   createdAt: () => Promise<DateTimeOutput>;
   text: () => Promise<String>;
   message: <T = MessagePromise>() => T;
+  likes: () => Promise<Int>;
+  dislikes: () => Promise<Int>;
 }
 
 export interface AnswerEdge {
@@ -527,6 +619,8 @@ export interface Message {
   id: ID_Output;
   createdAt: DateTimeOutput;
   text: String;
+  likes: Int;
+  dislikes: Int;
 }
 
 export interface MessagePromise extends Promise<Message>, Fragmentable {
@@ -542,6 +636,8 @@ export interface MessagePromise extends Promise<Message>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
+  likes: () => Promise<Int>;
+  dislikes: () => Promise<Int>;
 }
 
 export interface MessageSubscription
@@ -559,6 +655,8 @@ export interface MessageSubscription
     first?: Int;
     last?: Int;
   }) => T;
+  likes: () => Promise<AsyncIterator<Int>>;
+  dislikes: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface MessageNullablePromise
@@ -576,6 +674,8 @@ export interface MessageNullablePromise
     first?: Int;
     last?: Int;
   }) => T;
+  likes: () => Promise<Int>;
+  dislikes: () => Promise<Int>;
 }
 
 export interface AggregateMessage {
@@ -725,6 +825,8 @@ export interface AnswerPreviousValues {
   id: ID_Output;
   createdAt: DateTimeOutput;
   text: String;
+  likes: Int;
+  dislikes: Int;
 }
 
 export interface AnswerPreviousValuesPromise
@@ -733,6 +835,8 @@ export interface AnswerPreviousValuesPromise
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
   text: () => Promise<String>;
+  likes: () => Promise<Int>;
+  dislikes: () => Promise<Int>;
 }
 
 export interface AnswerPreviousValuesSubscription
@@ -741,6 +845,8 @@ export interface AnswerPreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   text: () => Promise<AsyncIterator<String>>;
+  likes: () => Promise<AsyncIterator<Int>>;
+  dislikes: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface MessageConnection {
@@ -778,9 +884,9 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
 */
-export type String = string;
+export type Int = number;
 
 /*
 DateTime scalar input type, allowing Date
@@ -793,9 +899,9 @@ DateTime scalar output type, which is always a string
 export type DateTimeOutput = string;
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
-export type Int = number;
+export type String = string;
 
 /**
  * Model Metadata

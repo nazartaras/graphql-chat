@@ -1,7 +1,6 @@
 function newMessageSubscribe(parent, args, context, info) {
-    console.log('hello')
     return context.prisma.$subscribe.message({
-        mutation_in: ['CREATED']
+        mutation_in: ['CREATED', 'UPDATED']
     }).node();
 }
 
@@ -11,6 +10,7 @@ const newMessage = {
         return payload;
     }
 };
+
 
 module.exports = {
     newMessage

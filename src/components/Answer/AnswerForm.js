@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mutation } from 'react-apollo';
 import { MESSAGE_QUERY, POST_ANSWER_MUTATION } from '../../queries';
+import { Button, Input } from 'semantic-ui-react';
 
 const AnswerForm = props => {
   const { messageId, toggleForm } = props;
@@ -11,7 +12,9 @@ const AnswerForm = props => {
     const data = store.readQuery({
       query: MESSAGE_QUERY,
       variables: {
-        orderBy
+        orderBy,
+        skip:0,
+        first:5
       }
     });
     const answeredMessage = data.messages.messageList.find(
@@ -25,23 +28,24 @@ const AnswerForm = props => {
   return (
     <div className="form-wrapper">
       <div className="input-wrapper">
-        <textarea
+        <Input
           onChange={e => setText(e.target.value)}
           placeholder="Answer text"
           autoFocus
           value={text}
+          style={{margin:'.1em'}}
           cols="25"
         />
       </div>
       <Mutation
         mutation={POST_ANSWER_MUTATION}
-        variables={{ messageId, text }}
+        variables={{ messageId, text, dislikes:0, likes:0 }}
         update={(store, { data: { postAnswer } }) => {
           _updateStoreAfterAddingAnswer(store, postAnswer, messageId)
         }}
       >
         {messageMutation =>
-          <button onClick={messageMutation}>Answer</button>
+          <Button color='green' onClick={messageMutation}>Answer</Button>
         }
       </Mutation>
     </div>
