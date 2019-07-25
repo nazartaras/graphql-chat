@@ -13,7 +13,7 @@ const MessageForm = props => {
       variables: {
         orderBy,
         skip:0,
-        first:5
+        first:3
       }
     }); 
     data.messages.messageList.unshift(newMessage);
